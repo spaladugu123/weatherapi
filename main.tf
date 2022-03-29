@@ -10,6 +10,15 @@ resource "azurerm_resource_group" "tf_test" {
   location = "eastus"
 }
 
+terraform {
+    backend "azurerm" {
+        resource_group_name  = "tfstorage"
+        storage_account_name = "tfspaladugu"
+        container_name       = "tfstate"
+        key                  = "terraform.tfstate"
+    }
+}
+
 
 resource "azurerm_container_group" "tfcg_test" {
   name                      = "weatherapi"
