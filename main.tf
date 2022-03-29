@@ -4,12 +4,6 @@ provider "azurerm" {
   }
 }
 
-
-resource "azurerm_resource_group" "tf_test" {
-  name = "tfmainrg"
-  location = "eastus"
-}
-
 terraform {
     backend "azurerm" {
         resource_group_name  = "tfstorage"
@@ -17,6 +11,11 @@ terraform {
         container_name       = "tfstate"
         key                  = "terraform.tfstate"
     }
+}
+
+resource "azurerm_resource_group" "tf_test" {
+  name = "tfmainrg"
+  location = "eastus"
 }
 
 
